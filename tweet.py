@@ -1,12 +1,10 @@
 import tweepy
+from config import consumer_key, consumer_secret, access_token, access_token_secret
+from index import new_tweet
 
 class TwitterAPI:
     def __init__(self):
-        consumer_key = ""
-        consumer_secret = ""
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        access_token = ""
-        access_token_secret = ""
         auth.set_access_token(access_token, access_token_secret)
         self.api = tweepy.API(auth)
 
@@ -15,4 +13,4 @@ class TwitterAPI:
 
 if __name__ == "__main__":
     twitter = TwitterAPI()
-    twitter.tweet("This is a test.")
+    twitter.tweet(new_tweet())
