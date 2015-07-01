@@ -8,7 +8,7 @@ from cStringIO import StringIO
 from config import NPR_API_KEY
 
 
-def api_feed(tag, numResults=1, char_limit=240, thumbnail=False, sidebar=False):
+def api_feed(tag, numResults=50):
     """Query the NPR API using given tag ID, return dictionary of results"""
 
     stories = query_api(tag, numResults)
@@ -29,7 +29,7 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False, sidebar=False):
     return story_list
 
 
-def query_api(tag, numResults=10):
+def query_api(tag, numResults=50):
     """Hits the NPR API, returns JSON story list"""
 
     id_string = ','.join([str(s) for s in tag])
@@ -52,8 +52,9 @@ def query_api(tag, numResults=10):
 def convert_date(timestamp):
     """Converts API timestamp to publication-ready dateline"""
 
+    day = timestamp[5:7]
     month = datetime.strptime(timestamp[8:11], '%b').strftime('%B')
     year = timestamp[12:16]
-    date = month + ' ' + year
-    
+    date = month + ' ' + day + ", " + year
+
     return date
