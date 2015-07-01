@@ -8,7 +8,7 @@ from cStringIO import StringIO
 from config import NPR_API_KEY
 
 
-def api_feed(tag, numResults=50):
+def api_feed(tag, numResults=5, endDate=2014-07-01):
     """Query the NPR API using given tag ID, return dictionary of results"""
 
     stories = query_api(tag, numResults)
@@ -29,7 +29,7 @@ def api_feed(tag, numResults=50):
     return story_list
 
 
-def query_api(tag, numResults=50):
+def query_api(tag, numResults=5, endDate=2014-07-01):
     """Hits the NPR API, returns JSON story list"""
 
     id_string = ','.join([str(s) for s in tag])
@@ -40,6 +40,7 @@ def query_api(tag, numResults=50):
         '&output=JSON' +
         '&numResults=%d' +
         '&id=%s' +
+        '&endDate=2014-07-01' +
         '&apiKey=%s') % (numResults, id_string, NPR_API_KEY)
 
     r = requests.get(query)
