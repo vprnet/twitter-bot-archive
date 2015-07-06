@@ -2,6 +2,7 @@
 import json
 import requests
 import os
+import random
 from datetime import datetime, date
 from cStringIO import StringIO
 from config import NPR_API_KEY
@@ -33,8 +34,12 @@ def query_api(tag, numResults=1):
 
     id_string = ','.join([str(s) for s in tag])
 
+    random_year = random.randint(2013, 2015)
+    random_month = random.randint(1, 12)
+    random_day = random.randint(1, 28)
+
     today = date.today()
-    last_year = today.replace(year=2013)
+    last_year = today.replace(year=random_year, month=random_month, day=random_day)
     endDate = last_year.isoformat()
 
     query = ('http://api.npr.org/query?orgid=692' +
