@@ -2,13 +2,12 @@
 import json
 import requests
 import os
-import urllib
 from datetime import datetime, date
 from cStringIO import StringIO
 from config import NPR_API_KEY
 
 
-def api_feed(tag, numResults=1, endDate=2014-07-01):
+def api_feed(tag, numResults=1):
     """Query the NPR API using given tag ID, return dictionary of results"""
 
     stories = query_api(tag, numResults)
@@ -29,13 +28,13 @@ def api_feed(tag, numResults=1, endDate=2014-07-01):
     return story_list
 
 
-def query_api(tag, numResults=1, endDate=2014-07-01):
+def query_api(tag, numResults=1):
     """Hits the NPR API, returns JSON story list"""
 
     id_string = ','.join([str(s) for s in tag])
 
     today = date.today()
-    last_year = today.replace(year=2014)
+    last_year = today.replace(year=2013)
     endDate = last_year.isoformat()
 
     query = ('http://api.npr.org/query?orgid=692' +
@@ -44,9 +43,9 @@ def query_api(tag, numResults=1, endDate=2014-07-01):
         '&action=Or' +
         '&output=JSON' +
         '&numResults=%d' +
-        '&id=%s' +
         '&endDate=%s' +
-        '&apiKey=%s') % (numResults, id_string, endDate, NPR_API_KEY)
+        '&id=%s' +
+        '&apiKey=%s') % (numResults, endDate, id_string, NPR_API_KEY)
 
     r = requests.get(query)
     j = json.loads(r.text)
