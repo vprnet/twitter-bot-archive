@@ -7,7 +7,9 @@ def new_tweet():
     story = api_feed(tags, numResults=1)
     today = date.today()
 
+    tweet = (story)[0]['date'] + ": " + (story)[0]['title'] + " " + (story)[0]['link']
+
     if date.weekday(today) == 3:
-        return (story)[0]['date'] + ": " + (story)[0]['title'] + " " + (story)[0]['link'] + " #tbt"
+        return tweet + " #tbt"
     else:
-        return (story)[0]['date'] + ": " + (story)[0]['title'] + " " + (story)[0]['link']
+        return tweet
