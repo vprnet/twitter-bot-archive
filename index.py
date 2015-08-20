@@ -20,6 +20,6 @@ def new_tweet():
         tweet = archive_tweet
 
     if date.weekday(today) == 3:
-        print tweet + " #tbt"
+        return tweet + " #tbt"
     else:
-        print tweet
+        return tweet
