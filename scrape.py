@@ -43,6 +43,6 @@ def new_archive_tweet():
     else:
         month = "December"
 
-    tweet = month + " " + random_archive_date[3:5] + ", " + "20" + random_archive_date[6:8] + ": " + random_archive_headline + " " + url
+    tweet = month + " " + random_archive_date[3:5] + ", " + "20" + random_archive_date[6:8] + ": " + random_archive_headline.title() + " " + url
 
     return tweet
