@@ -1,7 +1,3 @@
 #VPR's Archive Twitter Bot
 
-This is a quick prototype to gain some Twitter bot familiarity. The bot tweets out random stories from both VPR's Core Publisher history, which started in 2013, and VPR's archived digital history, which goes back to 2006. On Thursdays, it adds a #tbt.
-
-##Questions
-
-Get in touch! [@sarambsimon](http://twitter.com/sarambsimon)
+The bots are taking over. This project has moved into a repo for [all VPR Twitter bots](https://github.com/vprnet/bots). Follow along there! For any questions, get in touch: [@sarambsimon](http://twitter.com/sarambsimon)
